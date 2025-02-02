@@ -9,15 +9,15 @@ import SwiftUI
 
 struct StemSelectionView: View {
     let song: Song
-    
+
     @State private var selectedStem: String? = "Lead Vocal"
-    
+
     let stems = [
         ("Lead Vocal", "mic.fill"),
         ("Harmony", "music.mic"),
-        ("Bass", "waveform.path.ecg")
+        ("Bass", "waveform.path.ecg"),
     ]
-    
+
     var body: some View {
         VStack {
             // Header Section
@@ -26,47 +26,50 @@ struct StemSelectionView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                
+
                 Text(song.artist)
                     .font(.title3)
                     .foregroundColor(.gray)
             }
             .padding(.top, 20)
-            
+
             Spacer()
-            
+
             // Instruction Text
             VStack(spacing: 8) {
                 Text("Choose A Stem to Record")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                
-                Text("Each song has multiple vocal parts (stems). Select one to record your own version!")
-                    .font(.body)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal, 30)
+
+                Text(
+                    "Each song has multiple vocal parts (stems). Select one to record your own version!"
+                )
+                .font(.body)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.gray)
+                .padding(.horizontal, 30)
             }
-            
+
             Spacer()
-            
+
             // Stem List
             VStack {
                 ForEach(stems, id: \.0) { stem in
-                    StemRow(title: stem.0, iconName: stem.1, isSelected: selectedStem == stem.0) {
+                    StemRow(
+                        title: stem.0, iconName: stem.1,
+                        isSelected: selectedStem == stem.0
+                    ) {
                         selectedStem = stem.0
                     }
                 }
             }
             .padding(.horizontal, 20)
-            
+
             Spacer()
-            
+
             // Start Recording Button
-            Button(action: {
-                print("Start Recording: \(selectedStem ?? "")")
-            }) {
+            NavigationLink(destination: RecordingView()) {
                 Text("Start Recording")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -88,7 +91,7 @@ struct StemRow: View {
     var iconName: String
     var isSelected: Bool
     var onSelect: () -> Void
-    
+
     var body: some View {
         HStack {
             Image(systemName: iconName)
@@ -97,7 +100,7 @@ struct StemRow: View {
                 .frame(width: 40, height: 40)
                 .foregroundColor(.white)
                 .padding(.trailing, 10)
-            
+
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.headline)
@@ -107,9 +110,11 @@ struct StemRow: View {
                     .foregroundColor(.gray)
             }
             Spacer()
-            
+
             Circle()
-                .stroke(isSelected ? Color.highlightColor : Color.gray, lineWidth: 2)
+                .stroke(
+                    isSelected ? Color.highlightColor : Color.gray, lineWidth: 2
+                )
                 .frame(width: 25, height: 25)
                 .background(isSelected ? Color.highlightColor : Color.clear)
                 .clipShape(Circle())

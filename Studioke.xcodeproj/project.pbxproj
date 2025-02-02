@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1B269E122D4F1C34004E0C32 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B269E112D4F1C34004E0C32 /* AudioKit */; };
+		1B269E152D4F1C85004E0C32 /* AudioKitEX in Frameworks */ = {isa = PBXBuildFile; productRef = 1B269E142D4F1C85004E0C32 /* AudioKitEX */; };
+		1B269E182D4F1C9A004E0C32 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B269E172D4F1C9A004E0C32 /* SoundpipeAudioKit */; };
+		1B269E252D4F2C55004E0C32 /* Waveform in Frameworks */ = {isa = PBXBuildFile; productRef = 1B269E242D4F2C55004E0C32 /* Waveform */; };
+		1B269E282D4F2DF3004E0C32 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1B269E272D4F2DF3004E0C32 /* AudioKitUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1BB53DD42D4808D700A9A0D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +73,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B269E122D4F1C34004E0C32 /* AudioKit in Frameworks */,
+				1B269E282D4F2DF3004E0C32 /* AudioKitUI in Frameworks */,
+				1B269E152D4F1C85004E0C32 /* AudioKitEX in Frameworks */,
+				1B269E182D4F1C9A004E0C32 /* SoundpipeAudioKit in Frameworks */,
+				1B269E252D4F2C55004E0C32 /* Waveform in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +138,11 @@
 			);
 			name = Studioke;
 			packageProductDependencies = (
+				1B269E112D4F1C34004E0C32 /* AudioKit */,
+				1B269E142D4F1C85004E0C32 /* AudioKitEX */,
+				1B269E172D4F1C9A004E0C32 /* SoundpipeAudioKit */,
+				1B269E242D4F2C55004E0C32 /* Waveform */,
+				1B269E272D4F2DF3004E0C32 /* AudioKitUI */,
 			);
 			productName = Studioke;
 			productReference = 1BB53DBD2D4808D500A9A0D3 /* Studioke.app */;
@@ -208,6 +226,13 @@
 			);
 			mainGroup = 1BB53DB42D4808D500A9A0D3;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1B269E102D4F1C34004E0C32 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				1B269E132D4F1C85004E0C32 /* XCRemoteSwiftPackageReference "AudioKitEX" */,
+				1B269E162D4F1C9A004E0C32 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
+				1B269E232D4F2C55004E0C32 /* XCRemoteSwiftPackageReference "Waveform" */,
+				1B269E262D4F2DD5004E0C32 /* XCRemoteSwiftPackageReference "AudioKitUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1BB53DBE2D4808D500A9A0D3 /* Products */;
 			projectDirPath = "";
@@ -289,8 +314,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Studioke/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Provide mic access to process real-time audio";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -316,8 +343,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Studioke/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Provide mic access to process real-time audio";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -563,6 +592,77 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1B269E102D4F1C34004E0C32 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.4;
+			};
+		};
+		1B269E132D4F1C85004E0C32 /* XCRemoteSwiftPackageReference "AudioKitEX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKitEX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+		1B269E162D4F1C9A004E0C32 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+		1B269E232D4F2C55004E0C32 /* XCRemoteSwiftPackageReference "Waveform" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/Waveform";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+		1B269E262D4F2DD5004E0C32 /* XCRemoteSwiftPackageReference "AudioKitUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKitUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1B269E112D4F1C34004E0C32 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B269E102D4F1C34004E0C32 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		1B269E142D4F1C85004E0C32 /* AudioKitEX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B269E132D4F1C85004E0C32 /* XCRemoteSwiftPackageReference "AudioKitEX" */;
+			productName = AudioKitEX;
+		};
+		1B269E172D4F1C9A004E0C32 /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B269E162D4F1C9A004E0C32 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
+		};
+		1B269E242D4F2C55004E0C32 /* Waveform */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B269E232D4F2C55004E0C32 /* XCRemoteSwiftPackageReference "Waveform" */;
+			productName = Waveform;
+		};
+		1B269E272D4F2DF3004E0C32 /* AudioKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B269E262D4F2DD5004E0C32 /* XCRemoteSwiftPackageReference "AudioKitUI" */;
+			productName = AudioKitUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1BB53DB52D4808D500A9A0D3 /* Project object */;
 }

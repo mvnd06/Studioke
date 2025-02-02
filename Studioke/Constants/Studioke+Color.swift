@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 extension Color {
     static let backgroundColor = Color(hex: "251124")
@@ -13,16 +14,18 @@ extension Color {
     static let searchBarBackgroundColor = Color(hex: "4C2248")
     static let searchBarTextColor = Color(hex: "CF91C7")
     static let filterBackgroundColor = Color(hex: "4C2248")
-    
+    static let waveformStroke = Color(hex: "AB81A6")
+
     fileprivate init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        let hex = hex.trimmingCharacters(
+            in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)
-        
+
         let red = Double((int >> 16) & 0xFF) / 255.0
         let green = Double((int >> 8) & 0xFF) / 255.0
         let blue = Double(int & 0xFF) / 255.0
-        
+
         self.init(red: red, green: green, blue: blue)
     }
 }

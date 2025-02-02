@@ -29,7 +29,7 @@ enum SongFilter: String, CaseIterable, Identifiable {
 struct FilterButton: View {
     let title: String
     let isSelected: Bool
-    
+
     var body: some View {
         Text(title)
             .font(.subheadline)
@@ -38,12 +38,15 @@ struct FilterButton: View {
             .padding(.vertical, 8)
             .background(
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(isSelected ? Color.filterBackgroundColor : Color.clear)
+                    .fill(
+                        isSelected ? Color.filterBackgroundColor : Color.clear)
             )
             .foregroundColor(.white)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(isSelected ? Color.clear : Color.filterBackgroundColor, lineWidth: 2)
+                    .strokeBorder(
+                        isSelected ? Color.clear : Color.filterBackgroundColor,
+                        lineWidth: 2)
             )
     }
 }

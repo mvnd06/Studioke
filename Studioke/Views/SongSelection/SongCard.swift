@@ -9,18 +9,18 @@ import SwiftUI
 
 struct SongCard: View {
     let song: Song
-    
+
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             Image(song.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 120)
-            
+
             Rectangle()
                 .fill(Color.black.opacity(0.15))
                 .frame(height: 120)
-            
+
             Text(song.title)
                 .font(.headline)
                 .bold()
