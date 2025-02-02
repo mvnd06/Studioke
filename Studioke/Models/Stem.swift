@@ -8,7 +8,6 @@ import Foundation
 
 struct Stem: Identifiable {
     let id: UUID = UUID()
-    let name: String // e.g., "Main Vocal", "Harmony 1"
-    let audioURL: URL // Local or remote URL for the stem audio file
+    let name: String  // e.g., "Main Vocal", "Harmony 1"
+    let audioURL: URL  // Local or remote URL for the stem audio file
 }
-
