@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StemSelectionView: View {
+    let song: Song
+    
     @State private var selectedStem: String? = "Lead Vocal"
     
     let stems = [
@@ -20,12 +22,12 @@ struct StemSelectionView: View {
         VStack {
             // Header Section
             VStack(spacing: 5) {
-                Text("Levitating (feat. DaBaby)")
+                Text(song.title)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                 
-                Text("Dua Lipa")
+                Text(song.artist)
                     .font(.title3)
                     .foregroundColor(.gray)
             }

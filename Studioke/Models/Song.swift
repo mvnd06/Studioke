@@ -9,24 +9,27 @@ import Foundation
 struct Song: Identifiable {
     let id: UUID = UUID()
     let title: String
-//    let artist: String
+    let artist: String
     let imageName: String
-    /// Array of vocal stems belonging to this song
-//    let stems: [Stem]
     let tags: [String]
 }
 
+/// Array of vocal stems belonging to this song
+//    let stems: [Stem]
+
 let sampleSongs: [Song] = [
-    Song(title: "You Right", imageName: "img1", tags: ["Trending", "Top 50 USA"]),
-    Song(title: "Montero", imageName: "img2", tags: ["Top 50 USA"]),
-    Song(title: "Levitating", imageName: "img3", tags: ["Trending"]),
-    Song(title: "Butter", imageName: "img4", tags: ["Top 50 USA"]),
-    Song(title: "Bad Habits", imageName: "img5", tags: []),
-    Song(title: "Stay", imageName: "img6", tags: ["Trending"]),
-    Song(title: "Kiss Me More", imageName: "img7", tags: ["Trending"]),
-    Song(title: "Peaches", imageName: "img8", tags: ["Top 50 USA"]),
-    Song(title: "Good 4 U", imageName: "img9", tags: ["Trending"]),
-    Song(title: "Take My Breath", imageName: "img10", tags: []),
-    Song(title: "Save Your Tears", imageName: "img11", tags: ["Top 50 UK"]),
-    Song(title: "Blinding Lights", imageName: "img12", tags: ["Top 50 USA", "Top 50 UK"])
+    Song(title: "You Right (feat. The Weeknd)", artist: "Doja Cat", imageName: "img1", tags: ["Trending", "Top 50 USA"]),
+    Song(title: "Montero", artist: "Lil Nas X", imageName: "img2", tags: ["Top 50 USA"]),
+    Song(title: "Levitating (feat. DaBaby)", artist: "Dua Lipa", imageName: "img3", tags: ["Trending"]),
+    Song(title: "Butter", artist: "BTS", imageName: "img4", tags: ["Top 50 USA"]),
+    Song(title: "Bad Habits", artist: "Ed Sheeran", imageName: "img5", tags: []),
+    Song(title: "Stay", artist: "The Kid LAROI", imageName: "img6", tags: ["Trending"]),
+    Song(title: "Kiss Me More (feat. SZA)", artist: "Doja Cat", imageName: "img7", tags: ["Trending"]),
+    Song(title: "Peaches (feat. Daniel Caesar & Giveon)", artist: "Justin Bieber", imageName: "img8", tags: ["Top 50 USA"]),
+    Song(title: "Good 4 U", artist: "Olivia Rodrigo", imageName: "img9", tags: ["Trending"]),
+    Song(title: "Take My Breath", artist: "The Weeknd", imageName: "img10", tags: []),
+    Song(title: "Save Your Tears", artist: "The Weeknd", imageName: "img11", tags: ["Top 50 UK"]),
+    Song(title: "Blinding Lights", artist: "The Weeknd", imageName: "img12", tags: ["Top 50 USA", "Top 50 UK"])
 ]
+
+
