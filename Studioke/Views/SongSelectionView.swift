@@ -79,3 +79,28 @@ struct SongSelectionView: View {
         .background(Color.backgroundColor)
     }
 }
+
+struct DetailView: View {
+    var item: String
+    var onClose: () -> Void
+
+    var body: some View {
+        VStack {
+            Text(item)
+                .font(.largeTitle)
+                .padding()
+
+            Spacer()
+
+            Button("Close") {
+                onClose()
+            }
+            .padding()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(radius: 10)
+        .padding()
+    }
+}
