@@ -58,5 +58,11 @@ struct ScrollingWaveformView: View {
             let normalized = min(max(currentValue, 0), 1)
             dataPoints.append(normalized)
         }
+        .onChange(of: isRecording) {
+            if !isRecording {
+                // Reset data points so that animation resets.
+                dataPoints = Array(repeating: Double.infinity, count: 75)
+            }
+        }
     }
 }

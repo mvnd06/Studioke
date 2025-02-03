@@ -10,13 +10,13 @@ import AudioKitEX
 import AudioKitUI
 import SoundpipeAudioKit
 import SwiftUI
-import Waveform
 
 struct RecordingView: View {
+    var song: Song
     @StateObject var audioManager = AudioManager()
     @StateObject private var lyricsManager = LyricsManager()
     @State var formattedProgress: String = "00:00"
-
+    
     @State private var isRecording = false
 
     var normalizedValue: Double {
@@ -24,7 +24,7 @@ struct RecordingView: View {
         let maxPitch: Double = 280.0
         let clampedPitch = min(max(audioManager.amplitude, minPitch), maxPitch)
         let normalizedValue = (clampedPitch - minPitch) / (maxPitch - minPitch)
-        print("✍🏽 normalized pitch value: \(normalizedValue)")
+//        print("✍🏽 normalized pitch value: \(normalizedValue)")
 
         return normalizedValue
     }
@@ -39,7 +39,7 @@ struct RecordingView: View {
                         .bold()
                         .foregroundColor(.white)
                         .padding()
-                    
+
                     // Selected Stem
                     VStack {
                         HStack {
@@ -47,7 +47,7 @@ struct RecordingView: View {
                                 .resizable()
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(.white)
-                            
+
                             VStack(alignment: .leading) {
                                 Text("Lead Vocal")
                                     .font(.headline)
@@ -62,18 +62,20 @@ struct RecordingView: View {
                         .cornerRadius(12)
                     }
                     .padding(.horizontal)
-                    
+
                     // Karaoke Lyrics Syncing
-                    LyricView(formattedProgress: $formattedProgress)
-                    
+                    LyricView(song: song, formattedProgress: $formattedProgress, isPlaying: $isRecording)
+
                     Spacer()
                 }
                 .frame(height: proxy.size.height)
-                
+
                 Spacer()
-                
-                ControlPanel(isRecording: $isRecording, normalizedValue: normalizedValue, audioManager: audioManager)
-                
+
+                ControlPanel(
+                    isRecording: $isRecording, normalizedValue: normalizedValue,
+                    audioManager: audioManager)
+
             }
         }
         .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
@@ -88,5 +90,21 @@ struct RecordingView: View {
                 audioManager.stop()
             }
         }
+        .onChange(of: audioManager.elapsedTime) {
+            formattedProgress = formatTimestamp(milliseconds: Int(audioManager.elapsedTime))
+        }
+        .onAppear {
+//            print(song.lyrics.lyricsList)
+//            print(song.lyrics.timestamps.sorted(by: { $0.value < $1.value }))
+            print(song.lyrics.numberOfLines)
+        }
+    }
+    
+    func formatTimestamp(milliseconds: Int) -> String {
+        let minutes = (milliseconds / 60000) // 1 minute = 60,000 ms
+        let seconds = (milliseconds % 60000) / 1000 // Get remaining seconds
+        let hundredths = (milliseconds % 1000) / 10 // Convert milliseconds to hundredths
+
+        return String(format: "%02d:%02d.%02d", minutes, seconds, hundredths)
     }
 }

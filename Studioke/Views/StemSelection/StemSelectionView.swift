@@ -69,7 +69,7 @@ struct StemSelectionView: View {
             Spacer()
 
             // Start Recording Button
-            NavigationLink(destination: RecordingView()) {
+            NavigationLink(destination: RecordingView(song: song)) {
                 Text("Start Recording")
                     .font(.headline)
                     .foregroundColor(.white)

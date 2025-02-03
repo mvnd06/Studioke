@@ -15,7 +15,7 @@ struct ControlPanel: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             RoundedRectangle(cornerRadius: 15)
-                .fill(Color.gray.opacity(0.2))
+                .fill(Color.filterBackgroundColor.opacity(0.8))
                 .frame(height: isRecording ? 380 : 180)  // Expands when recording starts
                 .overlay(
                     VStack {

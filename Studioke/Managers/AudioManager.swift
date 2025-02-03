@@ -13,14 +13,19 @@ import SoundpipeAudioKit
 import SwiftUI
 
 class AudioManager: ObservableObject {
+    // MARK: - Published Properties
     @Published var pitch: Double = 0.0
     @Published var amplitude: Double = 0.0
+    @Published var elapsedTime: TimeInterval = 0.0
 
+
+    // MARK: - Audio Components
     var engine = AudioEngine()
     var mic: AudioEngine.InputNode?
-
     var pitchTap: PitchTap!
     var node: Fader!  // 🔹 Use Fader node to tap audio output
+    
+    private var timerTask: Task<Void, Never>?
 
     init() {
         configureAudioSession()
@@ -49,6 +54,7 @@ class AudioManager: ObservableObject {
         do {
             try engine.start()
             pitchTap.start()
+            startTimeTracking()
         } catch {
             print("Error starting AudioKit: \(error.localizedDescription)")
         }
@@ -57,6 +63,7 @@ class AudioManager: ObservableObject {
     func stop() {
         engine.stop()
         pitchTap.stop()
+        timerTask?.cancel()
     }
 
     /// Configures AVAudioSession
@@ -74,4 +81,19 @@ class AudioManager: ObservableObject {
             )
         }
     }
+    
+    // MARK: - Time Tracking
+    private func startTimeTracking() {
+        timerTask?.cancel()
+        
+        timerTask = Task { [weak self] in
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .milliseconds(10))
+                await MainActor.run {
+                    self?.elapsedTime += 10
+                }
+            }
+        }
+    }
 }
+

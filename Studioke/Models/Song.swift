@@ -6,12 +6,25 @@
 //
 import Foundation
 
-struct Song: Identifiable {
+class Song: Identifiable {
     let id: UUID = UUID()
     let title: String
     let artist: String
     let imageName: String
     let tags: [String]
+    var lyrics: Lyrics = Lyrics()
+    
+    func updateLyrics(_ lyrics: Lyrics) {
+        self.lyrics = lyrics
+    }
+    
+    init(title: String, artist: String, imageName: String, tags: [String], lyrics: Lyrics = Lyrics()) {
+        self.title = title
+        self.artist = artist
+        self.imageName = imageName
+        self.tags = tags
+        self.lyrics = lyrics
+    }
 }
 
 /// Array of vocal stems belonging to this song

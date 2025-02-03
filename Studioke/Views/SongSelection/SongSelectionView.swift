@@ -10,6 +10,7 @@ import SwiftUI
 struct SongSelectionView: View {
     @State private var searchText: String = ""
     @State private var selectedFilter: SongFilter? = nil
+    @StateObject var viewModel = LyricsSearchViewModel()
 
     var filteredSongs: [Song] {
         return sampleSongs.filter { song in
@@ -93,6 +94,21 @@ struct SongSelectionView: View {
             }
             .padding(.top)
             .background(Color.backgroundColor)
+        }
+        .onAppear {
+            Task {
+                await withTaskGroup(of: Void.self) { group in
+                    for song in filteredSongs {
+                        group.addTask {
+                            if let lyrics = await viewModel.searchLyrics(query: song.title) {
+                                await MainActor.run {
+                                    song.updateLyrics(lyrics)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
